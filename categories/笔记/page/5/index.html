@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Category: 笔记 | Think²º¹¹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="think2011 | javascript | coffeeScript | node | node.js | nodeJS | angular | angularJS">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Think²º¹¹">
+<meta property="og:url" content="http://think2011.github.io/categories/笔记/page/5/">
+<meta property="og:site_name" content="Think²º¹¹">
+<meta property="og:description" content="think2011 | javascript | coffeeScript | node | node.js | nodeJS | angular | angularJS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Think²º¹¹">
+<meta name="twitter:description" content="think2011 | javascript | coffeeScript | node | node.js | nodeJS | angular | angularJS">
+  
+    <link rel="alternative" href="/atom.xml" title="Think²º¹¹" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Think²º¹¹</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当思维和视野不再被日常熟悉的事情所局限时，就能发现更大的世界。Stay Hungry, Stay Foolish.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/bookcase">很多很多书</a>
+        
+          <a class="main-nav-link" href="/about">我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://think2011.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-14" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/06/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-14/" class="article-date">
+  <time datetime="2014-11-06T15:10:50.000Z" itemprop="datePublished">11月 06 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/06/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-14/">阅读大块头《javascript权威指南》笔记14-window对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>document对象的 location属性也引用到了 Location对象：<code>window.location === document.location // true</code></p>
+</li>
+<li><p>location.replace() 方法会在载入新文档之前删除浏览历史记录，也就是说无法通过后退键回到之前的文档。</p>
+</li>
+<li><p>navigator.onLine boolean 表示浏览器当前是否连接到了网络。</p>
+</li>
+<li><p><iframe>元素有 contentWindow属性，也就是对应的window对象。</iframe></p>
+</li>
+<li><p>一个窗口关闭了，代表它的window对象仍然存在，其中会有个closed属性的值为true，它的document会是null，它的方法也不再工作。</p>
+</li>
+<li><p>如果一个窗口是顶级窗口或者标签，它的parent属性的是这个窗口本身。 <code>parent === self // true</code></p>
+</li>
+<li><p>每个window都有自己的原型对象，也意味着instanceof不能跨窗口工作，会返回false。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/11/06/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-14/" data-id="1h4ueq6ye0nmeftq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-13" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/02/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-13/" class="article-date">
+  <time datetime="2014-11-02T12:50:50.000Z" itemprop="datePublished">11月 02 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/02/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-13/">阅读大块头《javascript权威指南》笔记13-web浏览器中的javascript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p><code>window</code>对象是所有客户端javascript的特性和API的主要接入点，表示浏览器的窗口或窗体。</p>
+</li>
+<li><p><code>window</code>对象中其中一个最重要的属性是<code>document</code>，它引用<code>document</code>对象，表示在窗口中的文档。</p>
+</li>
+<li><p><code>window、document、element</code>对象上另一个重要的属性集合是事件处理程序相关的属性。可以在脚本中绑定一个函数，这个函数会在某个事件发生时以异步的方式调用，事件的属性名以单词<code>on</code>开头。</p>
+</li>
+<li><p>用 <code>type=&quot;text/vbscript&quot;</code> 表示脚本用MIME类型，这里表示的用非标准的vbscript，这也意味着可以使用<code>script</code>元素来嵌入任意的数据，只要这<code>type</code>属性声明为一个不可执行的类型，想要获取数据时可以获取此元素的<code>text</code>属性。。</p>
+</li>
+<li><p>可以在 <code>URL</code>后面跟一个 <code>javascript:</code>协议限定符是另一种嵌入代码到客户端的方式。</p>
+</li>
+<li><p><code>script</code> 元素中有 <code>defer</code>和<code>async</code>属性，可以改变脚本的执行方式（在支持的浏览器中）,是布尔值属性，没有值。</p>
+</li>
+<li><p>大部分浏览器事件中，会把一个对象传递给事件处理程序作为参数，这个对象包含了事件的详细信息，例如传递给单机事件的对象，会有一个属性说明鼠标的哪个按钮被点击了。</p>
+</li>
+<li><p>有些事件的目标是文档元素，它们会经常往上传递给文档树，这个过程叫做<code>冒泡</code>.</p>
+</li>
+<li><p>客户端 javascript 的时间线是(简化)：</p>
+<ol>
+<li><p>浏览器创建<code>document</code>对象，并开始解析html元素和它们的文本内容后面添加<code>element</code>对象和<code>text</code>节点到文档中，这个时候<code>document.readystate</code>的值为<code>loading</code>.</p>
+</li>
+<li><p>在html解释器遇到没有<code>async</code>和<code>defer</code>属性的<code>script</code>元素时，它把这些元素添加到文档中，然后执行脚本，并且在执行时解释器会暂定，这样脚本就可以用<code>document.write()</code>把文本插入到输入流中。</p>
+</li>
+<li><p>当文档解析完毕，<code>document.readyState</code>变为<code>interactive</code> </p>
+</li>
+<li><p>这个时候文档已经解析完毕，但是浏览器可能还在等待其他内容载入，例如图片，所有完成后，<code>document.readyState</code>变为<code>complete</code>，浏览器接着触发<code>window</code>上的<code>load</code>事件。</p>
+</li>
+<li><p>此刻起，会调用异步事件，以响应用户的输入输入事件，网络事件，计时器过期等.</p>
+</li>
+</ol>
+</li>
+<li><p><code>XSS</code>攻击指的是攻击者向目标站点注入html标签，或者脚本。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/11/02/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-13/" data-id="hzvumir8lat8k045" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-12" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/01/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-12/" class="article-date">
+  <time datetime="2014-11-01T04:24:44.000Z" itemprop="datePublished">11月 01 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/01/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-12/">阅读大块头《javascript权威指南》笔记11-服务器端javascript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Rhino 是一种用java编写的javascript解释器，实现了通过javascript访问整个java API。</p>
+</li>
+<li><p>Node是官方的名字，Node.js非官方的名字，用于和其他Node区分。</p>
+</li>
+<li><p>Node是基于C++的高速javascript解释器，绑定了用于进程、文件和网络套接字等底层Unix API，还绑定了HTTP客户端和服务端API。</p>
+</li>
+<li><p>除了专门命名的同步方法外，Node的绑定都是异步的，且默认不阻塞。</p>
+</li>
+<li><p>Node在process命名空间中定义了重要的全局属性。</p>
+<ul>
+<li><code>process.version</code> 版本号</li>
+<li><code>process.argv</code> 命令行的数组参数</li>
+<li><code>process.env</code> 环境变量对象，例如 <code>process.env.PATH</code></li>
+<li><code>process.pid</code> 进程id</li>
+<li><code>process.cwd()</code> 返回当前工作目录</li>
+<li><code>process.getuid()</code> 返回当前用户id</li>
+<li><code>process.chdir()</code> 改变目录</li>
+<li><code>process.exit()</code> 退出</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/11/01/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-12/" data-id="wsl2foom3e88zbok" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-11/" class="article-date">
+  <time datetime="2014-10-31T15:16:10.000Z" itemprop="datePublished">10月 31 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-11/">阅读大块头《javascript权威指南》笔记11-javascript的子集和扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章感觉晦涩及非贴近实际，仅阅读。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-11/" data-id="fgqbdhgk2gvx2cwa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-10/" class="article-date">
+  <time datetime="2014-10-31T15:05:36.000Z" itemprop="datePublished">10月 31 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-10/">阅读大块头《javascript权威指南》笔记10-正则表达式的模式匹配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>在正则表达式创建的RegExp对象中，ECMAscript5的标准中，实例是独立的。</p>
+</li>
+<li><p>用 反斜线 <code>\</code> 作为转义非字母的特殊字符。</p>
+</li>
+<li><p>用 <code>^</code> 符号定义否定字符，例如 <code>/[^abc]/</code> 匹配 a b c 之外的所有字符。</p>
+</li>
+<li><p>用 <code>|</code> 表示可选字符， 例如 <code>/ab|cd|ef/</code> 匹配 ab 或者 cd 或者 ef，顺序为从左到右。</p>
+</li>
+<li><p><code>/[a-z]/</code> 匹配小写字母， <code>/[a-zA-Z0-9]/</code> 匹配任何字母和数字。</p>
+</li>
+<li><p><code>search()</code> 的参数如果不是正则表达式，会自动转换为正则表达式。</p>
+</li>
+<li><p><code>split()</code> 方法的参数也可以是一个正则表达式。</p>
+</li>
+<li><p><code>[...]</code> 匹配方括号内的任意字符</p>
+</li>
+<li><p><code>[^...]</code> 不在方括号内的任意字符。</p>
+</li>
+<li><p><code>.</code> 除换行符和其他Unicode航终止符之外的任意字符。</p>
+</li>
+<li><p><code>\w</code> 任何ASCII字符的单词，等同 <code>[a-zA-Z0-9]</code></p>
+</li>
+<li><p><code>\W</code> 任何不是ASCII字符的单词，同上相反.</p>
+</li>
+<li><p><code>\s</code> 任意Unicode空白符。</p>
+</li>
+<li><p><code>\S</code> 任意非Unicode空白符的字符，但和 <code>\w</code> 不同。</p>
+</li>
+<li><p><code>\d</code> 任何ASCII数字，等同 <code>[0-9]</code>。</p>
+</li>
+<li><p><code>\D</code> 除了ASCII数字外的任意字符。</p>
+</li>
+<li><p><code>{n,m}</code> 匹配前一项至少n次，但是不超过m次。</p>
+</li>
+<li><p><code>{n,}</code> 匹配前一项n次或者更多。</p>
+</li>
+<li><p><code>{n}</code> 匹配前一项n次</p>
+</li>
+<li><p><code>?</code> 匹配前一项0次或者1次，等同 <code>{0,1}</code></p>
+</li>
+<li><p><code>+</code> 匹配1次或者多次，等同 <code>{1,}</code></p>
+</li>
+<li><p><code>*</code> 匹配前一项0次或者多次，等同 <code>{0,}</code></p>
+</li>
+<li><p><code>(...)</code> 组合，将几个项组成为一个单元</p>
+</li>
+<li><p><code>(?:...)</code> 仅组合，但不记忆和改组相匹配的字符</p>
+</li>
+<li><p><code>^</code> 匹配开头</p>
+</li>
+<li><p><code>$</code> 匹配结尾</p>
+</li>
+<li><p><code>(?=P)</code> 零宽正向先行断言，要求接下来的字符都与p匹配，但是不包括匹配p的字符。</p>
+</li>
+<li><p><code>(?!p)</code> 零宽负向先行断言，要求接下来的字符不与p匹配。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/10/31/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-10/" data-id="rovrsoo0uw0tkpzo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/30/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-9/" class="article-date">
+  <time datetime="2014-10-30T14:48:56.000Z" itemprop="datePublished">10月 30 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/30/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-9/">阅读大块头《javascript权威指南》笔记9-类和模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>在javascript中，类的实现是基于原型继承机制的。</p>
+</li>
+<li><p>如果两个实例都从同一个原型对象上继承了属性，我们称之为同一个类的实例。</p>
+</li>
+<li><p>使用 <code>instanceof</code> 运算符来检测对象是否属于某个类，例如 <code>r instanceof Range</code>，返回布尔值。</p>
+</li>
+<li><p>实际上 <code>instanceof</code> 不会检测r是否由 <code>Range()</code> 构造函数初始化而来，而会检查r是否继承自 <code>Range.prototype</code>，这也说明了构造函数是类的共有标示的概念。</p>
+</li>
+<li><p>基于原型的继承机制是动态的，也就是说如果修改了原型，会影响到所有继承这个原型的实例对象，当然也意味着可以通过给原型添加新方法来扩充javascript类。</p>
+</li>
+<li><p>通过 <code>isPrototypeOf()</code> 可以检测对象的原型链上是否存在某个原型对象。 <code>range.methods.isPrototypeOf(r);</code> ,返回布尔值。</p>
+</li>
+<li><p>但是 <code>instanceof</code> 和 <code>isPrototypeOf</code> 的缺点是无法通过对象来获得类名，只能检测对象是否属于指定的类名，在客户端javascript中有个严重的不足，就是在多窗口和多框架中，每个都居中单独的执行上下文，每个上下文都包含独有的全局变量和构造函数，所以例如来自两个框架的 <code>Array()</code> 返回的结果是 <code>false</code>的。</p>
+</li>
+</ul>
+<ul>
+<li><p><code>null</code> 和 <code>undefined</code> 没有构造函数。</p>
+</li>
+<li><p><code>constructor</code> 可以 类名来判断是否来自同一个构造函数。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/10/30/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-9/" data-id="af9ep8oszqncmqh3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/07/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-8/" class="article-date">
+  <time datetime="2014-10-07T09:37:52.000Z" itemprop="datePublished">10月 07 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/07/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-8/">阅读大块头《javascript权威指南》笔记8-函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>函数只定义一次，但可能被执行或调用多次。</p>
+</li>
+<li><p>形参：函数中定义的变量。</p>
+</li>
+<li><p>实参：函数中参入的参数对象。</p>
+</li>
+<li><p>每次调用还会拥有另外一个值，本次调用的上下文，也就是this关键字的值。</p>
+</li>
+<li><p>如果函数挂载在一个对象上，作为对象的一个属性，这个就称为对象的方法，当通过这个对象来调用函数时，对象就是此次的上下文。</p>
+</li>
+<li><p>用于初始化一个新创建的对象的函数称为 构造函数（constructor）。</p>
+</li>
+<li><p>在javascript中，函数也是一个对象，例如可以把函数赋值给变量，或者作为参数传入其他函数。</p>
+</li>
+<li><p>函数可以嵌套在其他函数中定义，这样它们可以访问它们被定义时所处的作用域中的任何变量，这意味着javascript函数构成了一个闭包（closure）。</p>
+</li>
+<li><p>函数命名尽量于动词为开头。</p>
+</li>
+<li><p>函数定义时不会执行，只有调用时才会执行，有4种调用方式。</p>
+<ol>
+<li>作为函数</li>
+<li>作为方法</li>
+<li>作为构造函数</li>
+<li>通过它们的 call() 和 apply() 方法间接调用。</li>
+</ol>
+</li>
+<li><p>实参对象定义了 callee 和 caller 属性。</p>
+<ul>
+<li>callee 指代当前正在执行的函数。</li>
+<li>caller 是非标准的，但大多数浏览器都实现了这个属性，指代的是当前正在执行的函数的函数。</li>
+<li>在ECMA5严格模式中，对这两个属性的读写会产生一个类型错误。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/10/07/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-8/" data-id="duc7gmbpchv19r7p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/19/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-7/" class="article-date">
+  <time datetime="2014-09-19T14:39:58.000Z" itemprop="datePublished">9月 19 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/19/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-7/">阅读大块头《javascript权威指南》笔记7-数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>数组是之的有序集合。</p>
+</li>
+<li><p>每个值叫做一个元素，每个元素在数组中都有一个位置，用数字表示，也就是索引。</p>
+</li>
+<li><p>数组是无类型的，数组的元素可以试任意类型，并且同一个数组中的不同元素也可能是不同的类型。</p>
+</li>
+<li><p>数组的元素可能是对象或者其他数组，例如对象的数组和数组内的数组。</p>
+</li>
+<li><p>数组最大能容纳 4294967295 个元素。<br>数组是动态的，根据需要它们会增长或者缩减，创建时也无需声明一个固定的大小，变化时也无需重新分配空间。<br>数组可以是稀疏的，也就是说索引不一定要连续，它们之间可以由空缺。<br>每个数组都有一个length属性，非稀疏数组，length就是对应的个数，稀疏数组，lenbgth比所有元素的索引要大。<br><code>var a = []; a[1000] = 0; // a.length = 1001</code></p>
+</li>
+<li><p>如果省略某个值，省略的元素会被赋予undefined值。<br><code>var count = [1, , 3]; // [1, undefined, 3]</code></p>
+</li>
+<li><p>设置length属性为一个小于当前长度的非负数整数n时，大于或者等于n的元素会被删除。<br><code>var a = [1,2,3,4,5]; a.length = 3; // a = [1,2,3]</code></p>
+</li>
+<li><p>ES5中，可以通过Object.defineProperty()让数组变为自读。<br><code>var a = [1,2,3]; Object.defineProperty(a, &#39;length&#39;, {writable: false}); a.length = 1000; // a.length = 3;</code></p>
+</li>
+<li><p>使用 <code>push()</code> 在数组末尾增加一个或者多个元素.</p>
+</li>
+<li><p>可以像删除对象属性一样用 <code>delete</code> 运算符删除数组元素，并赋予 undefined，并且length不变。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/09/19/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-7/" data-id="cfxm55ipag032c10" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/12/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-6/" class="article-date">
+  <time datetime="2014-09-12T15:34:08.000Z" itemprop="datePublished">9月 12 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/12/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-6/">阅读大块头《javascript权威指南》笔记6-对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>所有通过对象字面量创建的对象都具有同一个原型对象，可以通过Object.prototype获得对象的引用。</li>
+<li>对象具有 ‘自有属性’，也有一些属性从原型对象继承而来，例如查询对象o的属性x，如果o中没有x，那么会继续在o的原型中查询x，如果这个原型也有原型，则一样处理，直到查到null为止。</li>
+<li>如果属性不存在，不会报错，会返回 undefined。</li>
+<li>delete 运算符只是断开属性和宿主对象的联系，而不能删除继承属性（非要删除的话，得遍历删除）。  <figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>	<span class="keyword">var</span> a = {x:<span class="number">1</span>};
+	<span class="keyword">var</span> b = a.x;
+	<span class="keyword">delete</span> a.x; <span class="comment">// a = {} b = {x:1}</span>
+</pre></td></tr></table></figure></li>
+<li></li>
+</ul>
+<h2 id="Object-create()">Object.create()</h2>
+<ul>
+<li>创建一个新对象，第一个参数是这个对象的原型。</li>
+<li>第一个参数传入null，则创建一个没有原型的对象，这种方式创建的对象不会继承任何东西，甚至不包括基础方法，例如toString()，也就是说不能和 ‘+’ 运算符一起工作。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/09/12/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-6/" data-id="seinnyxtrok3r96j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/03/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-5/" class="article-date">
+  <time datetime="2014-09-02T16:05:58.000Z" itemprop="datePublished">9月 03 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/03/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-5/">阅读大块头《javascript权威指南》笔记5-语句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>如果说表达式在javascript中是短语，那么语句就是javascript中的整句或者命令。</li>
+<li>语句是以分号结束的。</li>
+<li>var 和 function 都是声明语句，分别是定义变量和函数。</li>
+<li>如果 var 语句中变量没有指定初始化表达式，那么这个变量的值为 undefined</li>
+<li>break 是跳转到循环或者其他语句的结束。</li>
+<li>continue 是停止本次循环并执行下一次循环。</li>
+<li>return 可以让解释器挑出函数体的执行，并提供本次调用的返回值。</li>
+<li>在严格模式中禁止用 with 语句。</li>
+<li>严格模式中所有变量必须先声明。</li>
+<li>严格模式中调用的函数中的 this 值是undefined而不是全局对象，可以用这个特性来判断是否严格模式。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://think2011.github.io/2014/09/03/JavaScript-The-Definitive-Guide/javaScript-the-definitive-guide-5/" data-id="jn7q05bbl5o9wfs4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript权威指南/">javascript权威指南</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读大块头《javascript权威指南》/">阅读大块头《javascript权威指南》</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/categories/笔记/page/4/">&laquo; Prev</a><a class="page-number" href="/categories/笔记/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/笔记/page/3/">3</a><a class="page-number" href="/categories/笔记/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/categories/笔记/page/6/">6</a><a class="page-number" href="/categories/笔记/page/7/">7</a><a class="page-number" href="/categories/笔记/page/8/">8</a><a class="extend next" rel="next" href="/categories/笔记/page/6/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/11/19/calculate-legs/">用中文编写javascript代码</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/09/ES7-Async-Await/">体验异步的终极解决方案-ES7的Async/Await</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/10/LocalResizeIMG4/">localResizeIMG-前端本地客户端压缩图片，兼容IOS，Android，PC、自动按需加载文件</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/07/ES6/ES6-8/">ES6(ECMAScript 6)笔记8-函数的扩展</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/05/ES6/ES6-7/">ES6(ECMAScript 6)笔记7-对象的扩展</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 17.00px;">CSS</a><a href="/tags/CSS3实战/" style="font-size: 16.00px;">CSS3实战</a><a href="/tags/ES6/" style="font-size: 15.00px;">ES6</a><a href="/tags/ES7/" style="font-size: 10.00px;">ES7</a><a href="/tags/JS/" style="font-size: 10.00px;">JS</a><a href="/tags/LocalResizeIMG/" style="font-size: 13.00px;">LocalResizeIMG</a><a href="/tags/MEAN/" style="font-size: 11.00px;">MEAN</a><a href="/tags/angularjs/" style="font-size: 17.00px;">angularjs</a><a href="/tags/async/" style="font-size: 11.00px;">async</a><a href="/tags/await/" style="font-size: 10.00px;">await</a><a href="/tags/coffeeScript/" style="font-size: 13.00px;">coffeeScript</a><a href="/tags/coffeeScript学习笔记/" style="font-size: 12.00px;">coffeeScript学习笔记</a><a href="/tags/coffeescript/" style="font-size: 14.00px;">coffeescript</a><a href="/tags/comet/" style="font-size: 10.00px;">comet</a><a href="/tags/directive/" style="font-size: 13.00px;">directive</a><a href="/tags/express/" style="font-size: 13.00px;">express</a><a href="/tags/express4/" style="font-size: 10.00px;">express4</a><a href="/tags/gulp/" style="font-size: 10.00px;">gulp</a><a href="/tags/guthub/" style="font-size: 10.00px;">guthub</a><a href="/tags/html/" style="font-size: 10.00px;">html</a><a href="/tags/input-file/" style="font-size: 10.00px;">input-file</a><a href="/tags/javascript/" style="font-size: 20.00px;">javascript</a><a href="/tags/javascript权威指南/" style="font-size: 19.00px;">javascript权威指南</a><a href="/tags/javascript设计模式/" style="font-size: 18.00px;">javascript设计模式</a><a href="/tags/jsdoc/" style="font-size: 10.00px;">jsdoc</a><a href="/tags/mockjs/" style="font-size: 10.00px;">mock.js</a><a href="/tags/mongodb/" style="font-size: 13.00px;">mongodb</a><a href="/tags/mongoose/" style="font-size: 12.00px;">mongoose</a><a href="/tags/node-webkit/" style="font-size: 10.00px;">node-webkit</a><a href="/tags/nodejs/" style="font-size: 17.00px;">node.js</a><a href="/tags/npm/" style="font-size: 10.00px;">npm</a><a href="/tags/raty/" style="font-size: 10.00px;">raty</a><a href="/tags/redis/" style="font-size: 10.00px;">redis</a><a href="/tags/select2/" style="font-size: 10.00px;">select2</a><a href="/tags/transclude/" style="font-size: 10.00px;">transclude</a><a href="/tags/websocket/" style="font-size: 10.00px;">websocket</a><a href="/tags/上传/" style="font-size: 14.00px;">上传</a><a href="/tags/中文/" style="font-size: 10.00px;">中文</a><a href="/tags/作用域/" style="font-size: 10.00px;">作用域</a><a href="/tags/压缩/" style="font-size: 13.00px;">压缩</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08">八月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07">七月 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06">六月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03">三月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02">二月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12">十二月 2014</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11">十一月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">十月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">九月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08">八月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">五月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">三月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 曾浩<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+<!-- 百度统计 -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F33ef2e00d0bf27844f5b56241c6b6bb1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/bookcase" class="mobile-nav-link">很多很多书</a>
+  
+    <a href="/about" class="mobile-nav-link">我</a>
+  
+</nav>
+    
+
+   <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script> 
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+  </div>
+</body>
+</html>
