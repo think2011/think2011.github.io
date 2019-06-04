@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>用jsdoc3自动生成JS API文档 | think²º¹¹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介 jsdoc是一款自动产生JS文档的工具。 你得按照它的注释规范来写代码注释，才能够生成合适的文档。 我曾经写过各种风格的混乱注释，用一个个文本来存放管理我的代码库，当我不想再写某段重复难懂的代码的时候，我不得不在我的代码库里游来游去，好头疼啊！！它救了我！！   预览 它可以根据你写的代码自动生成这样的文档出来，看这里。  能够搜索，有详细的注释，保存了完整的代码… 很方便，是不是！ 接下来">
+<meta name="keywords" content="文档,效率,jsdoc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用jsdoc3自动生成JS API文档">
+<meta property="og:url" content="http://yoursite.com/2014/03/29/jsdoc-1/index.html">
+<meta property="og:site_name" content="think²º¹¹">
+<meta property="og:description" content="简介 jsdoc是一款自动产生JS文档的工具。 你得按照它的注释规范来写代码注释，才能够生成合适的文档。 我曾经写过各种风格的混乱注释，用一个个文本来存放管理我的代码库，当我不想再写某段重复难懂的代码的时候，我不得不在我的代码库里游来游去，好头疼啊！！它救了我！！   预览 它可以根据你写的代码自动生成这样的文档出来，看这里。  能够搜索，有详细的注释，保存了完整的代码… 很方便，是不是！ 接下来">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/jsdoc-1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/jsdoc-2.gif">
+<meta property="og:image" content="http://yoursite.com/images/jsdoc-3.gif">
+<meta property="og:updated_time" content="2019-06-04T17:09:59.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用jsdoc3自动生成JS API文档">
+<meta name="twitter:description" content="简介 jsdoc是一款自动产生JS文档的工具。 你得按照它的注释规范来写代码注释，才能够生成合适的文档。 我曾经写过各种风格的混乱注释，用一个个文本来存放管理我的代码库，当我不想再写某段重复难懂的代码的时候，我不得不在我的代码库里游来游去，好头疼啊！！它救了我！！   预览 它可以根据你写的代码自动生成这样的文档出来，看这里。  能够搜索，有详细的注释，保存了完整的代码… 很方便，是不是！ 接下来">
+<meta name="twitter:image" content="http://yoursite.com/images/jsdoc-1.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">think²º¹¹</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当思维和视野不再被日常熟悉的事情所局限时，就能发现更大的世界。Stay Hungry, Stay Foolish.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/bookcase">很多很多书</a>
+        
+          <a class="main-nav-link" href="/about">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-github-link" class="nav-icon" title="https://github.com/think2011" href="https://github.com/think2011"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jsdoc-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/29/jsdoc-1/" class="article-date">
+  <time datetime="2014-03-29T17:18:16.000Z" itemprop="datePublished">2014-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/效率/">效率</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用jsdoc3自动生成JS API文档
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><code>jsdoc</code>是一款自动产生JS文档的工具。</li>
+<li>你得按照它的<code>注释规范</code>来写代码注释，才能够生成合适的文档。</li>
+<li>我曾经写过<code>各种风格</code>的混乱注释，用<code>一个个文本</code>来存放管理我的代码库，当我不想再写某段重复难懂的代码的时候，我不得不在我的代码库里游来游去，好头疼啊！！它救了我！！ </li>
+</ul>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><ul>
+<li>它可以根据你写的代码自动生成这样的文档出来，<a href="http://davidshimjs.github.io/jaguarjs/doc/" target="_blank" rel="noopener">看这里</a>。
+<img src="/images/jsdoc-1.jpg" alt></li>
+<li>能够搜索，有详细的注释，保存了完整的代码… 很方便，是不是！</li>
+<li>接下来就动手吧！</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>安装 <a href="http://nodejs.org/" target="_blank" rel="noopener">node.js</a> </li>
+<li>通过<code>node包管理器(NPM)</code>安装<code>jsdoc</code>，<code>cmd</code>下运行以下代码</li>
+<li>安装完毕</li>
+</ol>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsdoc -g</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>写类似这样的代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @name Uploader</span></span><br><span class="line"><span class="comment"> * @class 异步文件上传组件，支持ajax、flash、iframe三种方案</span></span><br><span class="line"><span class="comment"> * @constructor</span></span><br><span class="line"><span class="comment"> * @extends Base</span></span><br><span class="line"><span class="comment"> * @requires UrlsInput</span></span><br><span class="line"><span class="comment"> * @requires IframeType</span></span><br><span class="line"><span class="comment"> * @requires  AjaxType</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&#125; config 组件配置（下面的参数为配置项，配置会写入属性，详细的配置说明请看属性部分）</span></span><br><span class="line"><span class="comment"> * @param &#123;Button&#125; config.button *，Button按钮的实例</span></span><br><span class="line"><span class="comment"> * @param &#123;Queue&#125; config.queue *，Queue队列的实例</span></span><br><span class="line"><span class="comment"> * @param &#123;String|Array&#125; config.type *，采用的上传方案</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&#125; config.serverConfig *，服务器端配置</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; config.urlsInputName *，存储文件路径的隐藏域的name名</span></span><br><span class="line"><span class="comment"> * @param &#123;Boolean&#125; config.isAllowUpload 是否允许上传文件</span></span><br><span class="line"><span class="comment"> * @param &#123;Boolean&#125; config.autoUpload 是否自动上传</span></span><br><span class="line"><span class="comment"> * @example</span></span><br><span class="line"><span class="comment"> * var uploader = new Uploader(&#123;button:button,queue:queue,serverConfig:&#123;action:'test.php'&#125;&#125;)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Uploader</span>(<span class="params">config</span>) </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>完整的注释规范：<a href="http://usejsdoc.org/#JSDoc_Examples" target="_blank" rel="noopener">看这里</a></p>
+</blockquote>
+<ul>
+<li>配置 <code>conf.json</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;tags&quot;: &#123;</span><br><span class="line">        &quot;allowUnknownTags&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;source&quot;: &#123;</span><br><span class="line">    	&quot;include&quot;: [&quot;src&quot;],</span><br><span class="line">        &quot;includePattern&quot;: &quot;.+\\.js(doc)?$&quot;,</span><br><span class="line">        &quot;excludePattern&quot;: &quot;(^|\\/|\\\\)_&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">	&quot;templates&quot;: &#123;</span><br><span class="line">		&quot;cleverLinks&quot;: true,</span><br><span class="line">		&quot;monospaceLinks&quot;: true,</span><br><span class="line">		&quot;default&quot;: &#123;</span><br><span class="line">			&quot;outputSourceFiles&quot; : true</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;applicationName&quot;: &quot;demo&quot;,</span><br><span class="line">		&quot;openGraph&quot;: &#123;&#125;,</span><br><span class="line">		&quot;meta&quot;: &#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>完整的conf.json介绍 <a href="http://usejsdoc.org/about-configuring-jsdoc.html" target="_blank" rel="noopener">看这里</a></p>
+</blockquote>
+<ul>
+<li><code>cmd</code>下输入 <code>jsdoc -c conf.json</code> ，出现的<code>out</code>文件夹就是生成好的文档。</li>
+</ul>
+<p><img src="/images/jsdoc-2.gif" alt></p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><blockquote>
+<p>Q: 博主，怎么我生成的文档界面跟你的不一样啊… ( ⊙ o ⊙ )啊！<br>A: 哦，那是因为我为了吸引你进来特地换了个好看的模板呀。<br>p.s: 自带模板除了没有搜索，都挺好的。</p>
+</blockquote>
+<p>我直接把jsdoc<code>默认的模板</code>替换了</p>
+<ol>
+<li>图中的模板是 <a href="https://github.com/davidshimjs/jaguarjs-jsdoc" target="_blank" rel="noopener">jaguarjs-jsdoc</a> ，下载下来，解压，待用。</li>
+<li>删除清空 <code>C:\%user%\%用户名%\AppData\Roaming\npm\node_modules\jsdoc\templates\default</code> ，然后把 <a href="https://github.com/davidshimjs/jaguarjs-jsdoc" target="_blank" rel="noopener">jaguarjs-jsdoc</a> 放入进去即可<br><img src="/images/jsdoc-3.gif" alt></li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<p>文中代码来自 <a href="http://www.36ria.com/5101" target="_blank" rel="noopener">使用jsdoc生成组件API文档—jsdoc实战</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/03/29/jsdoc-1/" data-id="cjwi26qj4003pass2fkmierz9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsdoc/">jsdoc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/效率/">效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文档/">文档</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/04/01/MEAN-BLOG-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          实践MEAN开发留言博客-1 (Mongodb+Express+Angularjs+Node.js)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/15/node-webkit-ga/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用node-webkit开发桌面应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/31/css-sprite/">有效解决 css sprite 图片使用 rem 单位边角缺失的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/31/node-ocr/">用node.js实现验证码简单识别</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/13/lodash-doc-v4/">Lodash4正式版发布了！以及提前翻译的中文文档</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/reg-new-line/">javascript正确匹配换行符</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/19/calculate-legs/">用中文编写javascript代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15.71px;">CSS</a> <a href="/tags/CSS3实战/" style="font-size: 15px;">CSS3实战</a> <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/ES7/" style="font-size: 10px;">ES7</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/LocalResizeIMG/" style="font-size: 12.14px;">LocalResizeIMG</a> <a href="/tags/MEAN/" style="font-size: 10.71px;">MEAN</a> <a href="/tags/angularjs/" style="font-size: 15.71px;">angularjs</a> <a href="/tags/async/" style="font-size: 10.71px;">async</a> <a href="/tags/await/" style="font-size: 10px;">await</a> <a href="/tags/coffeeScript/" style="font-size: 12.14px;">coffeeScript</a> <a href="/tags/coffeeScript学习笔记/" style="font-size: 11.43px;">coffeeScript学习笔记</a> <a href="/tags/coffeescript/" style="font-size: 12.86px;">coffeescript</a> <a href="/tags/comet/" style="font-size: 10px;">comet</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/directive/" style="font-size: 12.14px;">directive</a> <a href="/tags/express/" style="font-size: 12.14px;">express</a> <a href="/tags/express4/" style="font-size: 10px;">express4</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/guthub/" style="font-size: 10px;">guthub</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/input-file/" style="font-size: 10px;">input-file</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascript-权威指南/" style="font-size: 17.86px;">javascript 权威指南</a> <a href="/tags/javascript设计模式/" style="font-size: 17.14px;">javascript设计模式</a> <a href="/tags/jsdoc/" style="font-size: 10px;">jsdoc</a> <a href="/tags/lodash/" style="font-size: 10px;">lodash</a> <a href="/tags/mock-js/" style="font-size: 10px;">mock.js</a> <a href="/tags/mongodb/" style="font-size: 12.14px;">mongodb</a> <a href="/tags/mongoose/" style="font-size: 11.43px;">mongoose</a> <a href="/tags/node-webkit/" style="font-size: 10px;">node-webkit</a> <a href="/tags/node-js/" style="font-size: 16.43px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/raty/" style="font-size: 10px;">raty</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/select2/" style="font-size: 10px;">select2</a> <a href="/tags/sprite/" style="font-size: 10px;">sprite</a> <a href="/tags/transclude/" style="font-size: 10px;">transclude</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/上传/" style="font-size: 12.86px;">上传</a> <a href="/tags/中文/" style="font-size: 10.71px;">中文</a> <a href="/tags/中文文档/" style="font-size: 10px;">中文文档</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/压缩/" style="font-size: 12.14px;">压缩</a> <a href="/tags/地址联动/" style="font-size: 10px;">地址联动</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/声明提升/" style="font-size: 10px;">声明提升</a> <a href="/tags/实战/" style="font-size: 17.14px;">实战</a> <a href="/tags/客户端压缩图片/" style="font-size: 10.71px;">客户端压缩图片</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/微信群发助手/" style="font-size: 10px;">微信群发助手</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/换行符/" style="font-size: 10px;">换行符</a> <a href="/tags/效率/" style="font-size: 11.43px;">效率</a> <a href="/tags/文档/" style="font-size: 10.71px;">文档</a> <a href="/tags/文档生成工具/" style="font-size: 10px;">文档生成工具</a> <a href="/tags/桌面应用/" style="font-size: 10px;">桌面应用</a> <a href="/tags/模块加载/" style="font-size: 10px;">模块加载</a> <a href="/tags/模拟登录/" style="font-size: 10px;">模拟登录</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/笔记/" style="font-size: 19.29px;">笔记</a> <a href="/tags/级联/" style="font-size: 10px;">级联</a> <a href="/tags/编写高质量javascript代码的68个有效方法/" style="font-size: 13.57px;">编写高质量javascript代码的68个有效方法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 18.57px;">设计模式</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/陷阱/" style="font-size: 10px;">陷阱</a> <a href="/tags/面试/" style="font-size: 12.86px;">面试</a> <a href="/tags/题目/" style="font-size: 12.86px;">题目</a> <a href="/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 think2011<br>
+      由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/bookcase" class="mobile-nav-link">很多很多书</a>
+  
+    <a href="/about" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

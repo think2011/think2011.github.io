@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>think²º¹¹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="think2011 | javascript | 前端 | node | node.js | nodeJS | vue.js | vue | react">
+<meta name="keywords" content="think2011,javascript,node,vue,react">
+<meta property="og:type" content="website">
+<meta property="og:title" content="think²º¹¹">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:site_name" content="think²º¹¹">
+<meta property="og:description" content="think2011 | javascript | 前端 | node | node.js | nodeJS | vue.js | vue | react">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="think²º¹¹">
+<meta name="twitter:description" content="think2011 | javascript | 前端 | node | node.js | nodeJS | vue.js | vue | react">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">think²º¹¹</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当思维和视野不再被日常熟悉的事情所局限时，就能发现更大的世界。Stay Hungry, Stay Foolish.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/bookcase">很多很多书</a>
+        
+          <a class="main-nav-link" href="/about">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-github-link" class="nav-icon" title="https://github.com/think2011" href="https://github.com/think2011"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-parse-constructor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/13/parse-constructor/" class="article-date">
+  <time datetime="2015-01-13T12:38:37.000Z" itemprop="datePublished">2015-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/作品/">作品</a>►<a class="article-category-link" href="/categories/作品/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/13/parse-constructor/">为什么不可以提前 new 构造函数？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>查看本文之前，期待您了解过 javascript变量声明提升(hoisting)的机制</p>
+</blockquote>
+<h3 id="先来看一段函数声明的代码"><a href="#先来看一段函数声明的代码" class="headerlink" title="先来看一段函数声明的代码"></a>先来看一段函数声明的代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'正常运行'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码能够正常执行吗？</p>
+<p>显然是可以的。<br>根据javascript的机制，这段代码将被解析为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f;</span><br><span class="line"></span><br><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"正常运行"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+<h3 id="如果是构造函数呢？"><a href="#如果是构造函数呢？" class="headerlink" title="如果是构造函数呢？"></a>如果是构造函数呢？</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> F();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">&#125;</span><br><span class="line">F.prototype.init = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'正常运行'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>凭直觉，这段代码能够正常执行吗？</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/13/parse-constructor/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/13/parse-constructor/" data-id="cjwi26qjl004cass22j4xxtaa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/作用域/">作用域</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/声明提升/">声明提升</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS3 in action/css3InAction-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/10/CSS3 in action/css3InAction-4/" class="article-date">
+  <time datetime="2015-01-10T15:58:29.000Z" itemprop="datePublished">2015-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/10/CSS3 in action/css3InAction-4/">CSS3实战 笔记4-新增的弹性盒模型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>引入了新的盒模型处理机制，该模型用于决定元素在盒子中的分布方式以及如何处理盒子的可用空间。</p>
+</li>
+<li><p>css3 新增了8个属性</p>
+<ul>
+<li><code>box-align</code>           定义子元素在盒子内垂直方向上的空间分配方式</li>
+<li><code>box-direction</code>     定义盒子的显示顺序</li>
+<li><code>box-flex</code>           定义子元素在盒子内的自适应尺寸</li>
+<li><code>box-flex-group</code>    定义子元素群组</li>
+<li><code>box-lines</code>           定义子元素分列显示</li>
+<li><code>box-ordinal-group</code> 定义子元素在盒子内的显示位置</li>
+<li><code>box-orient</code>           定义盒子分布的坐标轴</li>
+<li><code>box-pack</code>           定义子元素在盒子内水平方向的空间分配方式</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/think2011/css3InActive-practice" target="_blank" rel="noopener">实战练习源码</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/10/CSS3 in action/css3InAction-4/" data-id="cjwi26qo800f0ass2xvunprhz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3实战/">CSS3实战</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angular-load-modules" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/28/angular-load-modules/" class="article-date">
+  <time datetime="2014-12-28T13:24:45.000Z" itemprop="datePublished">2014-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/28/angular-load-modules/">探究基于angular的WebAPP模块加载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="以往webapp的模块加载方式"><a href="#以往webapp的模块加载方式" class="headerlink" title="以往webapp的模块加载方式"></a>以往webapp的模块加载方式</h2><h3 id="iframe方式"><a href="#iframe方式" class="headerlink" title="iframe方式"></a>iframe方式</h3><p><img src="/images/angular-load-modules-app1.gif" alt="iframe方式"></p>
+<p>iframe的方式将每个模块作为单独的页面开发，通过菜单动态载入。</p>
+<ul>
+<li>优点：实现思路方便。</li>
+<li>缺点：阻塞全局onload请求、开多了窗口会严重卡顿，代码冗余。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/28/angular-load-modules/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/28/angular-load-modules/" data-id="cjwi26qhd000kass2njx0ex2h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块加载/">模块加载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-questions/其他" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/questions/其他/" class="article-date">
+  <time datetime="2014-12-18T00:05:18.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/questions/其他/">前端开发面试题收集-其他篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>收集经典的前端开发面试题</p>
+</blockquote>
+<h2 id="减少页面加载时间的方法"><a href="#减少页面加载时间的方法" class="headerlink" title="减少页面加载时间的方法?"></a>减少页面加载时间的方法?</h2><ul>
+<li>优化图片，选择合适的格式。</li>
+<li>优化 css，压缩合并 css。</li>
+<li>优化 js，压缩合并 js。</li>
+<li>指定高度和宽度，如果浏览器没有找到这两个参数，会一边下载图片一边计算大小。</li>
+<li>减少 http 请求，合并文件，合并图片。</li>
+<li>懒加载</li>
+<li>异步请求</li>
+</ul>
+<h2 id="GET-和-POST-的请求最大能多大？"><a href="#GET-和-POST-的请求最大能多大？" class="headerlink" title="GET 和 POST 的请求最大能多大？"></a>GET 和 POST 的请求最大能多大？</h2><ul>
+<li>GET 请求是放在 url 里面的，理论上没有限制，但是 IE 有长度限制，大概是 2083 字节。</li>
+<li>POST 理论上也是没有限制的，是由服务器的处理程序设置，以及服务器配置决定。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/18/questions/其他/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/18/questions/其他/" data-id="cjwi26qs600l5ass26f49upkf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题目/">题目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-questions/yahoo35item" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/questions/yahoo35item/" class="article-date">
+  <time datetime="2014-12-18T00:05:10.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/questions/yahoo35item/">前端开发面试题收集-扩展-雅虎团队 35 条性能优化守则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="网页内容"><a href="#网页内容" class="headerlink" title="网页内容"></a>网页内容</h2><ul>
+<li>减少 http 请求次数</li>
+<li>减少 DNS 查询次数</li>
+<li>避免页面跳转</li>
+<li>缓存 ajax</li>
+<li>延迟加载</li>
+<li>提前加载</li>
+<li>减少 dom 元素数量</li>
+<li>根据域名划分内容</li>
+<li>减少 iframe 数量</li>
+<li>避免 404</li>
+</ul>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><ul>
+<li>使用 CDN</li>
+<li>添加 Expires 或者 cache-control 报头文</li>
+<li>Gzip 压缩传输文件</li>
+<li>配置 ETags</li>
+<li>尽早 flush 输出</li>
+<li>使用 GET ajax 请求</li>
+<li>避免空的图片 src</li>
+</ul>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><ul>
+<li>减少 cookie 大小</li>
+<li>页面内容使用无 cookie 域名</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/18/questions/yahoo35item/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/18/questions/yahoo35item/" data-id="cjwi26qs400l2ass2axmke7ms" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题目/">题目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-questions/js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/12/questions/js/" class="article-date">
+  <time datetime="2014-12-12T18:53:30.000Z" itemprop="datePublished">2014-12-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/12/questions/js/">前端开发面试题收集-JS 篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>收集经典的前端开发面试题</p>
+</blockquote>
+<h2 id="setTimeout-的时间定义为-0-有什么用？"><a href="#setTimeout-的时间定义为-0-有什么用？" class="headerlink" title="setTimeout 的时间定义为 0 有什么用？"></a>setTimeout 的时间定义为 0 有什么用？</h2><ul>
+<li>javascript 引擎是单线程处理任务的，它把任务放在队列中，不会同步执行，必须在完成一个任务后才开始另一个任务。</li>
+<li>由于 setTimeout 可以把任务从某个队列中跳出成为新队列，因此能够得到期望的结果。</li>
+</ul>
+<h2 id="怎么理解-this"><a href="#怎么理解-this" class="headerlink" title="怎么理解 this"></a>怎么理解 this</h2><ul>
+<li>this 指向的总是调用函数的那个对象。</li>
+<li>this 一般情况下，是全局对象 Global。</li>
+</ul>
+<h2 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h2><ul>
+<li>闭包是一个概念，我的理解是函数里的函数，能够读取函数内部变量的函数。</li>
+<li>就是将函数内部和函数外部连接起来的一座桥梁。</li>
+<li>闭包是不被内存回收机制回收的。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/12/questions/js/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/12/questions/js/" data-id="cjwi26qs200kyass2n6ko6rhr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题目/">题目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-questions/css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/12/questions/css/" class="article-date">
+  <time datetime="2014-12-12T14:01:34.000Z" itemprop="datePublished">2014-12-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/12/questions/css/">前端开发面试题收集-CSS 篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>收集经典的前端开发面试题</p>
+</blockquote>
+<h2 id="什么是-CSS-盒子模型"><a href="#什么是-CSS-盒子模型" class="headerlink" title="什么是 CSS 盒子模型"></a>什么是 CSS 盒子模型</h2><ul>
+<li>页面上的每个元素都被浏览器看做是一个矩形的盒子。</li>
+<li>由内容、填充、边框、边界组成。</li>
+</ul>
+<h2 id="什么是-css-sprite"><a href="#什么是-css-sprite" class="headerlink" title="什么是 css sprite"></a>什么是 css sprite</h2><ul>
+<li>将多个图片拼接在一个图片中，通过 background-position 和元素尺寸调节显示想要的背景的方案。</li>
+<li>优点：<br>_ 减少 HTTP 请求数，加快页面加载速度。<br>_ 提高压缩比、减少图片大小 * 更换风格方便，只需在一张或者几张图片上修改颜色或者样式即可。</li>
+<li>缺点：<br>_ 图片合并麻烦<br>_ 维护麻烦，修改一个图片可能需要重新布局整个图片、样式</li>
+</ul>
+<h2 id="display-none-于-visibility-hidden-的区别？"><a href="#display-none-于-visibility-hidden-的区别？" class="headerlink" title="display:none; 于 visibility:hidden; 的区别？"></a>display:none; 于 visibility:hidden; 的区别？</h2><ul>
+<li>前者让元素在 dom 中消失，不占据空间，后者不会消失、并占据，只是内容不可见。</li>
+<li>前者是非继承的，父节点消失、子节点也会消失，后者相反，即使父节点消失，设置子节点为 visibility: visible;可显现子节点。</li>
+<li>修改前者会造成文档重排，后者只会造成元素重绘。</li>
+<li>读屏器不会读取前者，会读取后者。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/12/questions/css/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/12/questions/css/" data-id="cjwi26qrw00kqass2qsdf3ax9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题目/">题目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-questions/html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/10/questions/html/" class="article-date">
+  <time datetime="2014-12-10T18:05:32.000Z" itemprop="datePublished">2014-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/10/questions/html/">前端开发面试题收集-HTML 篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>收集经典的前端开发面试题</p>
+</blockquote>
+<h2 id="Doctype-是什么？说明特点。"><a href="#Doctype-是什么？说明特点。" class="headerlink" title="Doctype 是什么？说明特点。"></a>Doctype 是什么？说明特点。</h2><ul>
+<li><!doctype>声明必须处于HTML文档的头部，在<html>标签之前。</html></li>
+<li><!doctype>声明不是一个HTML标签，是一个用于告诉浏览器使用哪种HTML规范的。</li>
+<li>该标签可以声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的版本。</li>
+</ul>
+<h2 id="img-的-title-和-alt-有什么区别"><a href="#img-的-title-和-alt-有什么区别" class="headerlink" title="img 的 title 和 alt 有什么区别"></a>img 的 title 和 alt 有什么区别</h2><ul>
+<li>title 用于为元素提供附加的提示，通常鼠标滑动到元素上会显示。</li>
+<li>alt 是 img 特有的属性，是图片内容的自定义描述，用于图片无法加载时，描述图片内容。</li>
+<li>搜索引擎会分析 alt 描述。</li>
+</ul>
+<h2 id="什么是-web-语义化，为什么需要语义化。"><a href="#什么是-web-语义化，为什么需要语义化。" class="headerlink" title="什么是 web 语义化，为什么需要语义化。"></a>什么是 web 语义化，为什么需要语义化。</h2><ul>
+<li>是指通过 HTML 标记表示页面包含的信息，包含了 HTML 标签的语义化和 CSS 命名的语义化。</li>
+<li>HTML 标签的语义化是指：使用例如 H1-H6 等恰当的表达文档结构。</li>
+<li>CSS 命名的语义化是指：为 HTML 标签添加有意义的 class、id。<br>需要语义化的原因：<br>_ 去掉样式后页面依然呈现清晰的结构。<br>_ 盲人使用读屏器更好的阅读。<br>_ 搜索引擎更好的理解页面，有利于收录。<br>_ 团队项目可持续运作和维护。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/10/questions/html/#more">更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/10/questions/html/" data-id="cjwi26qs000kuass2lwb1mfib" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题目/">题目</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS3 in action/css3InAction-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/10/CSS3 in action/css3InAction-3/" class="article-date">
+  <time datetime="2014-12-10T17:36:44.000Z" itemprop="datePublished">2014-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/10/CSS3 in action/css3InAction-3/">CSS3实战 笔记3-增强的文本和颜色功能</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>新增了几个文本属性</p>
+<ul>
+<li><code>text-shadow</code> 定义文本阴影或者模糊效果</li>
+<li><code>text-overflow</code> 定义省略文本的处理方式</li>
+<li><code>word-wrap</code> 定义文本超过指定容器的边界时是否断开转行。</li>
+</ul>
+</li>
+<li><p>完善了颜色控制，实现了对不透明效果的支持。</p>
+<ul>
+<li><code>HSL</code>  通过色调（H）、饱和度（S）、亮度（L）三个颜色通道的变化来表示颜色。</li>
+<li><code>HSLA</code> 在上面的基础上增加了透明度（A）的设置</li>
+<li><code>RGBA</code> 在 RGB 基础上增加了透明度（A）的设置</li>
+<li><code>opacity</code> 定义不透明度</li>
+</ul>
+</li>
+<li><p>text-shadow 属性接受一个以逗号分隔的阴影效果列表。</p>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/think2011/css3InActive-practice" target="_blank" rel="noopener">实战练习源码</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/10/CSS3 in action/css3InAction-3/" data-id="cjwi26qo600ezass21o7v8bcf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3实战/">CSS3实战</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Effective javascript/effectivejavascript-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/10/Effective javascript/effectivejavascript-7/" class="article-date">
+  <time datetime="2014-12-10T04:16:10.000Z" itemprop="datePublished">2014-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/10/Effective javascript/effectivejavascript-7/">编写高质量javascript代码的68个有效方法 笔记7-并发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>不要阻塞I/O事件队列</p>
+</li>
+<li><p>编写通用的错误处理函数来避免复制和粘贴错误处理代码。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/10/Effective javascript/effectivejavascript-7/" data-id="cjwi26qpn00gvass2he3qvlis" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记/">笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编写高质量javascript代码的68个有效方法/">编写高质量javascript代码的68个有效方法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/31/css-sprite/">有效解决 css sprite 图片使用 rem 单位边角缺失的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/31/node-ocr/">用node.js实现验证码简单识别</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/13/lodash-doc-v4/">Lodash4正式版发布了！以及提前翻译的中文文档</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/reg-new-line/">javascript正确匹配换行符</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/19/calculate-legs/">用中文编写javascript代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15.71px;">CSS</a> <a href="/tags/CSS3实战/" style="font-size: 15px;">CSS3实战</a> <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/ES7/" style="font-size: 10px;">ES7</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/LocalResizeIMG/" style="font-size: 12.14px;">LocalResizeIMG</a> <a href="/tags/MEAN/" style="font-size: 10.71px;">MEAN</a> <a href="/tags/angularjs/" style="font-size: 15.71px;">angularjs</a> <a href="/tags/async/" style="font-size: 10.71px;">async</a> <a href="/tags/await/" style="font-size: 10px;">await</a> <a href="/tags/coffeeScript/" style="font-size: 12.14px;">coffeeScript</a> <a href="/tags/coffeeScript学习笔记/" style="font-size: 11.43px;">coffeeScript学习笔记</a> <a href="/tags/coffeescript/" style="font-size: 12.86px;">coffeescript</a> <a href="/tags/comet/" style="font-size: 10px;">comet</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/directive/" style="font-size: 12.14px;">directive</a> <a href="/tags/express/" style="font-size: 12.14px;">express</a> <a href="/tags/express4/" style="font-size: 10px;">express4</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/guthub/" style="font-size: 10px;">guthub</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/input-file/" style="font-size: 10px;">input-file</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascript-权威指南/" style="font-size: 17.86px;">javascript 权威指南</a> <a href="/tags/javascript设计模式/" style="font-size: 17.14px;">javascript设计模式</a> <a href="/tags/jsdoc/" style="font-size: 10px;">jsdoc</a> <a href="/tags/lodash/" style="font-size: 10px;">lodash</a> <a href="/tags/mock-js/" style="font-size: 10px;">mock.js</a> <a href="/tags/mongodb/" style="font-size: 12.14px;">mongodb</a> <a href="/tags/mongoose/" style="font-size: 11.43px;">mongoose</a> <a href="/tags/node-webkit/" style="font-size: 10px;">node-webkit</a> <a href="/tags/node-js/" style="font-size: 16.43px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/raty/" style="font-size: 10px;">raty</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/select2/" style="font-size: 10px;">select2</a> <a href="/tags/sprite/" style="font-size: 10px;">sprite</a> <a href="/tags/transclude/" style="font-size: 10px;">transclude</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/上传/" style="font-size: 12.86px;">上传</a> <a href="/tags/中文/" style="font-size: 10.71px;">中文</a> <a href="/tags/中文文档/" style="font-size: 10px;">中文文档</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/压缩/" style="font-size: 12.14px;">压缩</a> <a href="/tags/地址联动/" style="font-size: 10px;">地址联动</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/声明提升/" style="font-size: 10px;">声明提升</a> <a href="/tags/实战/" style="font-size: 17.14px;">实战</a> <a href="/tags/客户端压缩图片/" style="font-size: 10.71px;">客户端压缩图片</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/微信群发助手/" style="font-size: 10px;">微信群发助手</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/换行符/" style="font-size: 10px;">换行符</a> <a href="/tags/效率/" style="font-size: 11.43px;">效率</a> <a href="/tags/文档/" style="font-size: 10.71px;">文档</a> <a href="/tags/文档生成工具/" style="font-size: 10px;">文档生成工具</a> <a href="/tags/桌面应用/" style="font-size: 10px;">桌面应用</a> <a href="/tags/模块加载/" style="font-size: 10px;">模块加载</a> <a href="/tags/模拟登录/" style="font-size: 10px;">模拟登录</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/笔记/" style="font-size: 19.29px;">笔记</a> <a href="/tags/级联/" style="font-size: 10px;">级联</a> <a href="/tags/编写高质量javascript代码的68个有效方法/" style="font-size: 13.57px;">编写高质量javascript代码的68个有效方法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 18.57px;">设计模式</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/陷阱/" style="font-size: 10px;">陷阱</a> <a href="/tags/面试/" style="font-size: 12.86px;">面试</a> <a href="/tags/题目/" style="font-size: 12.86px;">题目</a> <a href="/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 think2011<br>
+      由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/bookcase" class="mobile-nav-link">很多很多书</a>
+  
+    <a href="/about" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
