@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>再一次，javascript设计模式与开发实践-模板模式 | think²º¹¹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简述 一种典型的通过封装变化来提高可扩展性的模式。  模板模式由两个部分组成，一个抽象父类，一个具体子类，通常父类中封装了子类可用的公共实现，子类通过继承父类，也就继承了整个父类的实现，那么模板模式可以重写方法，或者直接重写父类方法。 使用场景 过程类似，方式一致的  案例">
+<meta name="keywords" content="javascript,设计模式,实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="再一次，javascript设计模式与开发实践-模板模式">
+<meta property="og:url" content="http://yoursite.com/2015/07/04/design pattern in action/模板模式/index.html">
+<meta property="og:site_name" content="think²º¹¹">
+<meta property="og:description" content="简述 一种典型的通过封装变化来提高可扩展性的模式。  模板模式由两个部分组成，一个抽象父类，一个具体子类，通常父类中封装了子类可用的公共实现，子类通过继承父类，也就继承了整个父类的实现，那么模板模式可以重写方法，或者直接重写父类方法。 使用场景 过程类似，方式一致的  案例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-05T01:49:19.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再一次，javascript设计模式与开发实践-模板模式">
+<meta name="twitter:description" content="简述 一种典型的通过封装变化来提高可扩展性的模式。  模板模式由两个部分组成，一个抽象父类，一个具体子类，通常父类中封装了子类可用的公共实现，子类通过继承父类，也就继承了整个父类的实现，那么模板模式可以重写方法，或者直接重写父类方法。 使用场景 过程类似，方式一致的  案例">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">think²º¹¹</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">当思维和视野不再被日常熟悉的事情所局限时，就能发现更大的世界。Stay Hungry, Stay Foolish.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/bookcase">很多很多书</a>
+        
+          <a class="main-nav-link" href="/about">关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-github-link" class="nav-icon" title="https://github.com/think2011" href="https://github.com/think2011"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-design pattern in action/模板模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/04/design pattern in action/模板模式/" class="article-date">
+  <time datetime="2015-07-04T18:42:04.000Z" itemprop="datePublished">2015-07-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      再一次，javascript设计模式与开发实践-模板模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><blockquote>
+<p>一种典型的通过封装变化来提高可扩展性的模式。</p>
+</blockquote>
+<p>模板模式由两个部分组成，一个抽象父类，一个具体子类，通常父类中封装了子类可用的公共实现，子类通过继承父类，也就继承了整个父类的实现，那么模板模式可以重写方法，或者直接重写父类方法。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>过程类似，方式一致的</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><a id="more"></a>
+
+<p>咖啡和茶是一个典型的，泡咖啡和泡茶都是一样的方式，只是过程不同。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Beverage = <span class="function"><span class="keyword">function</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> boilWater = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'把水煮沸'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> brew = param.brew || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span>  <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须传递此方法'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> pourInCup = param.pourInCup || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span>  <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须传递此方法'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> addCondiments = param.addCondiments || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span>  <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'必须传递此方法'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    F.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        boilWater();</span><br><span class="line">        brew();</span><br><span class="line">        pourInCup();</span><br><span class="line">        addCondiments();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> F;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Coffee = Beverage(&#123;</span><br><span class="line">    brew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'冲泡咖啡'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    pourInCup: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'倒进杯子'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    addCondiments: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'加糖和咖啡'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Tea = Beverage(&#123;</span><br><span class="line">    brew: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'冲泡茶叶'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    pourInCup: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'倒进杯子'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    addCondiments: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'加🍋'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">coffee.init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> tea = <span class="keyword">new</span> Tea();</span><br><span class="line">tea.init();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/07/04/design pattern in action/模板模式/" data-id="cjwikr16300lk8jrnm4zftap6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/05/design pattern in action/享元模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          再一次，javascript设计模式与开发实践-享元模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/04/design pattern in action/组合模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">再一次，javascript设计模式与开发实践-组合模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/31/css-sprite/">有效解决 css sprite 图片使用 rem 单位边角缺失的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/31/node-ocr/">用node.js实现验证码简单识别</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/13/lodash-doc-v4/">Lodash4正式版发布了！以及提前翻译的中文文档</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/21/reg-new-line/">javascript正确匹配换行符</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/19/calculate-legs/">用中文编写javascript代码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15.71px;">CSS</a> <a href="/tags/CSS3实战/" style="font-size: 15px;">CSS3实战</a> <a href="/tags/ES6/" style="font-size: 14.29px;">ES6</a> <a href="/tags/ES7/" style="font-size: 10px;">ES7</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/LocalResizeIMG/" style="font-size: 12.14px;">LocalResizeIMG</a> <a href="/tags/MEAN/" style="font-size: 10.71px;">MEAN</a> <a href="/tags/angularjs/" style="font-size: 15.71px;">angularjs</a> <a href="/tags/async/" style="font-size: 10.71px;">async</a> <a href="/tags/await/" style="font-size: 10px;">await</a> <a href="/tags/coffeeScript/" style="font-size: 12.14px;">coffeeScript</a> <a href="/tags/coffeeScript学习笔记/" style="font-size: 11.43px;">coffeeScript学习笔记</a> <a href="/tags/coffeescript/" style="font-size: 12.86px;">coffeescript</a> <a href="/tags/comet/" style="font-size: 10px;">comet</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/directive/" style="font-size: 12.14px;">directive</a> <a href="/tags/express/" style="font-size: 12.14px;">express</a> <a href="/tags/express4/" style="font-size: 10px;">express4</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/guthub/" style="font-size: 10px;">guthub</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/input-file/" style="font-size: 10px;">input-file</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/javascript-权威指南/" style="font-size: 17.86px;">javascript 权威指南</a> <a href="/tags/javascript设计模式/" style="font-size: 17.14px;">javascript设计模式</a> <a href="/tags/jsdoc/" style="font-size: 10px;">jsdoc</a> <a href="/tags/lodash/" style="font-size: 10px;">lodash</a> <a href="/tags/mock-js/" style="font-size: 10px;">mock.js</a> <a href="/tags/mongodb/" style="font-size: 12.14px;">mongodb</a> <a href="/tags/mongoose/" style="font-size: 11.43px;">mongoose</a> <a href="/tags/node-webkit/" style="font-size: 10px;">node-webkit</a> <a href="/tags/node-js/" style="font-size: 16.43px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/ocr/" style="font-size: 10px;">ocr</a> <a href="/tags/raty/" style="font-size: 10px;">raty</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/select2/" style="font-size: 10px;">select2</a> <a href="/tags/sprite/" style="font-size: 10px;">sprite</a> <a href="/tags/transclude/" style="font-size: 10px;">transclude</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/上传/" style="font-size: 12.86px;">上传</a> <a href="/tags/中文/" style="font-size: 10.71px;">中文</a> <a href="/tags/中文文档/" style="font-size: 10px;">中文文档</a> <a href="/tags/作用域/" style="font-size: 10px;">作用域</a> <a href="/tags/压缩/" style="font-size: 12.14px;">压缩</a> <a href="/tags/地址联动/" style="font-size: 10px;">地址联动</a> <a href="/tags/坑/" style="font-size: 10px;">坑</a> <a href="/tags/声明提升/" style="font-size: 10px;">声明提升</a> <a href="/tags/实战/" style="font-size: 17.14px;">实战</a> <a href="/tags/客户端压缩图片/" style="font-size: 10.71px;">客户端压缩图片</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/微信群发助手/" style="font-size: 10px;">微信群发助手</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/换行符/" style="font-size: 10px;">换行符</a> <a href="/tags/效率/" style="font-size: 11.43px;">效率</a> <a href="/tags/文档/" style="font-size: 10.71px;">文档</a> <a href="/tags/文档生成工具/" style="font-size: 10px;">文档生成工具</a> <a href="/tags/桌面应用/" style="font-size: 10px;">桌面应用</a> <a href="/tags/模块加载/" style="font-size: 10px;">模块加载</a> <a href="/tags/模拟登录/" style="font-size: 10px;">模拟登录</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/笔记/" style="font-size: 19.29px;">笔记</a> <a href="/tags/级联/" style="font-size: 10px;">级联</a> <a href="/tags/编写高质量javascript代码的68个有效方法/" style="font-size: 13.57px;">编写高质量javascript代码的68个有效方法</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a> <a href="/tags/设计模式/" style="font-size: 18.57px;">设计模式</a> <a href="/tags/调试/" style="font-size: 10px;">调试</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/陷阱/" style="font-size: 10px;">陷阱</a> <a href="/tags/面试/" style="font-size: 12.86px;">面试</a> <a href="/tags/题目/" style="font-size: 12.86px;">题目</a> <a href="/tags/验证码识别/" style="font-size: 10px;">验证码识别</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 think2011<br>
+      由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/bookcase" class="mobile-nav-link">很多很多书</a>
+  
+    <a href="/about" class="mobile-nav-link">关于我</a>
+  
+</nav>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
