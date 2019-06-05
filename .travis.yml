@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - '12.3.0'
+cache: yarn
+
+script:
+  - hexo clean
+  - hexo g
+  - cd ./public/
+  - git init
+  - git config --global user.name "think2011"
+  - git config --global user.email 452125301.hzplay@gmail.com
+  - git add .
+  - git commit -m "Update By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  - git push -f "https://${GH_TOKEN}@${GH_REF}" master:master # github
+
+branches:
+  only:
+    - source
+
+env:
+  global:
+    - GH_REF: github.com/think2011/think2011.github.io.git

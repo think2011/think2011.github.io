@@ -1,0 +1,35 @@
+# Header
+menu:
+  首页: /
+  很多很多书: /bookcase
+  关于我: /about
+
+# Content
+excerpt_link: 更多
+fancybox: true
+
+# Sidebar
+sidebar: right
+widgets:
+  - recent_posts
+  - tagcloud
+  - archive
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: true
+
+# Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
